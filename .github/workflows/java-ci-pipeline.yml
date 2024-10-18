@@ -35,7 +35,7 @@ jobs:
          java-version: ${{inputs.java-version}}
   sonar-analysis: 
     needs: [maven-build]
-    if: ${{inputs.run-sonar}} == 'true'
+    if: ${{inputs.run-sonar == 'true' }} 
     runs-on: ubuntu-latest
     steps:
     -  name: Sonar Analysis
