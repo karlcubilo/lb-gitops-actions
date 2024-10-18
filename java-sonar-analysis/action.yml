@@ -1,1 +1,22 @@
 name: java-sonar-analysis
+description: Java Sonar Analysis
+inputs:
+  sonar-options:
+    required: false
+    type: string
+    default: 'sonar:sonar -Dsonar.projectKey=karlcubilo -Dsonar.organization=karlcubilo -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=$SONARCLOUD_TOKEN -Dsonar.scm.disabled=true'
+    description: Sonar Command
+
+runs:
+  using: composite
+
+  steps:
+  - name: Checkout
+      uses: actions/checkout@v4
+  - name: Run Sonar Analysis
+    shell: bash
+    run: |
+      echo 'Run Sonar Analysis'
+      mvn ${{inputs.sonar-options}}
+    env:
+      SONARCLOUD_TOKEN: ${{ secrets.SONAR_TOKEN }}
