@@ -1,13 +1,8 @@
 name: java-maven-build
 description: Used for building Java Applications
 inputs:
-  build-options:
-    required: false
-    type: string
-    default: clean verify -Dci.buildNumber=lb-${{github.ref_name}}-${{github.sha}}-${{github.run_number}} -Dci.buildURL=${{github.repositoryUrl}}
-    description: Build and Test
   package-options:
-    required: false
+    required: true
     description: Build, Test and Package
   java-version:
     required: true
@@ -25,14 +20,6 @@ runs:
         java-version: ${{inputs.java-version}}
         distribution: 'temurin'
         cache: maven
-      
-    - name: Run Build Options
-      if: ${{inputs.build-options != ''}}
-      shell: bash
-      run: |
-        echo 'Run Build Options'
-        mvn ${{inputs.build-options}}
-        
     - name: Run Package Options
       if: ${{inputs.package-options != ''}}
       shell: bash
