@@ -34,6 +34,7 @@ jobs:
          package-options: ${{inputs.package-options}}
          java-version: ${{inputs.java-version}}
   sonar-analysis: 
+    if: ${{inputs.run-sonar}} == 'true'
     runs-on: ubuntu-latest
     steps:
     -  name: Sonar Analysis
