@@ -1,7 +1,7 @@
 name: java-sonar-analysis
 description: Java Sonar Analysis
 secrets:
-  SONARCLOUD_TOKEN:
+  SONAR_TOKEN:
     description: Token for Sonar Cloud
 inputs:
   sonar-options:
