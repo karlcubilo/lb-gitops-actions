@@ -19,6 +19,10 @@ on:
         required: true
         type: string
         description: Java Version
+      sonar-token:
+        required: true
+        type: string
+        description: Sonar Token
      
 jobs:
   maven-build:
@@ -38,4 +42,5 @@ jobs:
        uses: karlcubilo/lb-gitops-actions/java-sonar-analysis@latest
        with:
          sonar-options: ${{inputs.sonar-options}}
+         sonar-token: ${{inputs.sonar-token}}
      
