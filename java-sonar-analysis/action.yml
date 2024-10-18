@@ -1,13 +1,9 @@
 name: java-sonar-analysis
 description: Java Sonar Analysis
-secrets:
-  SONAR_TOKEN:
-    description: Token for Sonar Cloud
 inputs:
   sonar-options:
     required: false
     type: string
-    default: 'sonar:sonar -Dsonar.projectKey=karlcubilo -Dsonar.organization=karlcubilo -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=${{secrets.SONAR_TOKEN}} -Dsonar.scm.disabled=true'
     description: Sonar Command
 
 runs:
