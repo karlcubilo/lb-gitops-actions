@@ -6,14 +6,10 @@ on:
         required: true
         type: string
         description: Application Name
-      build-options:
-        required: false
-        type: string
-        default: clean verify -Dci.buildNumber=lb-${{github.ref_name}}-${{github.sha}}-${{github.run_number}} -Dci.buildURL=${{github.repositoryUrl}}
-        description: Build and Test
       package-options:
-        required: false
+        required: true
         type: string
+        default: mvn clean package
         description: Build, Test and Package
       run-sonar:
         required: false
