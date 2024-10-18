@@ -37,13 +37,10 @@ jobs:
     if: ${{inputs.run-sonar == 'true' }} 
     runs-on: ubuntu-latest
     steps:
-    -  name: Log
-       shell: bash
-       run: |
-         echo 'SONARCLOUD TOKEN - '${{secrets.SONARCLOUD_TOKEN}}
     -  name: Sonar Analysis
        uses: karlcubilo/lb-gitops-actions/java-sonar-analysis@latest
        with:
          sonar-options: ${{inputs.sonar-options}}
+        
 
      
