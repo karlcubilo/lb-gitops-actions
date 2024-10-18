@@ -41,6 +41,7 @@ jobs:
        uses: karlcubilo/lb-gitops-actions/java-sonar-analysis@latest
        with:
          sonar-options: ${{inputs.sonar-options}}
+         secrets: inherit    
         
 
      
