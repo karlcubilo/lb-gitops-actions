@@ -2,7 +2,7 @@ name: Java CI Workflow
 on:
   workflow_call:
     secrets:
-        SONAR_TOKEN: ${{secrets.SONAR_TOKEN}}
+        SONAR_TOKEN_PIPELINE: ${{secrets.SONAR_TOKEN}}
     inputs:
       application-name:
         required: true
@@ -24,7 +24,7 @@ on:
       sonar-options:
         required: false
         type: string
-        default: 'sonar:sonar -Dsonar.projectKey=karlcubilo -Dsonar.organization=karlcubilo -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=${{secrets.SONAR_TOKEN}} -Dsonar.scm.disabled=true -Dsonar.quality.gate=true'
+        default: 'sonar:sonar -Dsonar.projectKey=karlcubilo -Dsonar.organization=karlcubilo -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=${{secrets.SONAR_TOKEN_PIPELINE}} -Dsonar.scm.disabled=true -Dsonar.quality.gate=true'
         description: Sonar Parameters
 
 
