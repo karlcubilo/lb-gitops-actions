@@ -19,10 +19,11 @@ on:
         required: false
         type: string
         description: Run Sonar Analysis
+      java-version:
+        required: true
+        type: string
+        description: Java Version
      
-
-
-
 jobs:
   maven-build:
     runs-on: ubuntu-latest
@@ -31,6 +32,7 @@ jobs:
        uses: karlcubilo/lb-gitops-actions/java-maven-build@latest
        with:
          package-options: ${{inputs.package-options}}
+         java-version: ${{inputs.java-version}}
   sonar-analysis: 
     runs-on: ubuntu-latest
     steps:
