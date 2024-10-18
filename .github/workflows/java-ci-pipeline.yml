@@ -1,6 +1,9 @@
 name: Java CI Workflow
 on:
   workflow_call:
+    secrets:
+      SONARCLOUD_TOKEN:
+        description: Sonar Cloud Token
     inputs:
       application-name:
         required: true
@@ -42,5 +45,5 @@ jobs:
        uses: karlcubilo/lb-gitops-actions/java-sonar-analysis@latest
        with:
          sonar-options: ${{inputs.sonar-options}}
-         sonar-token: ${{inputs.sonar-token}}
+       secrets: inherit
      
