@@ -1,10 +1,14 @@
 name: java-sonar-analysis
 description: Java Sonar Analysis
 inputs:
+  sonar-token:
+    required: true
+    type: string
+    description: Sonar Token
   sonar-options:
     required: false
     type: string
-    default: 'sonar:sonar -Dsonar.projectKey=karlcubilo -Dsonar.organization=karlcubilo -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=$SONARCLOUD_TOKEN -Dsonar.scm.disabled=true'
+    default: 'sonar:sonar -Dsonar.projectKey=karlcubilo -Dsonar.organization=karlcubilo -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=${{inputs.sonar-token}} -Dsonar.scm.disabled=true'
     description: Sonar Command
 
 runs:
@@ -18,5 +22,3 @@ runs:
     run: |
       echo 'Run Sonar Analysis'
       mvn ${{inputs.sonar-options}}
-    env:
-      SONARCLOUD_TOKEN: ${{ secrets.SONAR_TOKEN }}
