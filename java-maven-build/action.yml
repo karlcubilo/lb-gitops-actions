@@ -9,12 +9,22 @@ inputs:
   package-options:
     required: false
     description: Build, Test and Package
+  java-version:
+    required: true
+    type: string
+    description: Java Version
 
 runs:
   using: composite
   steps:
     - name: Checkout
       uses: actions/checkout@v4
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: ${{inputs.java-version}}
+        distribution: 'temurin'
+        cache: maven
       
     - name: Run Build Options
       if: ${{inputs.build-options != ''}}
