@@ -1,8 +1,6 @@
 name: Java CI Workflow
 on:
   workflow_call:
-    secrets:
-        SONAR_TOKEN_PIPELINE: ${{secrets.SONAR_TOKEN}}
     inputs:
       application-name:
         required: true
