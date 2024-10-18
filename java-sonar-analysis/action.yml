@@ -5,6 +5,10 @@ inputs:
     required: false
     type: string
     description: Sonar Command
+  java-version:
+    required: true
+    type: string
+    description: Java Version
 
 runs:
   using: composite
@@ -12,6 +16,12 @@ runs:
   steps:
   - name: Checkout
     uses: actions/checkout@v4
+   - name: Set up JDK
+     uses: actions/setup-java@v3
+     with:
+       java-version: ${{inputs.java-version}}
+       distribution: 'temurin'
+       cache: maven  
   - name: Run Sonar Analysis
     shell: bash
     run: |
