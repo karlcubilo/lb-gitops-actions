@@ -2,7 +2,7 @@ name: Java CI Workflow
 on:
   workflow_call:
     secrets:
-      SONARCLOUD_TOKEN:
+      SONAR_TOKEN:
         description: Sonar Cloud Token
     inputs:
       application-name:
