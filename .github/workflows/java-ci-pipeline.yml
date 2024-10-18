@@ -40,8 +40,7 @@ jobs:
     -  name: Sonar Analysis
        uses: karlcubilo/lb-gitops-actions/java-sonar-analysis@latest
        with:
-         sonar-options: ${{inputs.sonar-options}}
-         secrets: inherit    
+         sonar-options: 'sonar:sonar -Dsonar.projectKey=karlcubilo -Dsonar.organization=karlcubilo -Dsonar.host.url=https://sonarcloud.io -Dsonar.token=${{secrets.SONAR_TOKEN}} -Dsonar.scm.disabled=true' 
         
 
      
