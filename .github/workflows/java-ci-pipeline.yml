@@ -8,7 +8,7 @@ on:
         type: string
         description: Application Name
       build-options:
-        required: true
+        required: false
         type: string
         default: clean verify -Dci.buildNumber=lb-${{github.ref_name}}-${{github.sha}}-${{github.run_number}} -Dci.buildURL=${{github.repositoryUrl}}
         description: Build and Test
@@ -33,14 +33,14 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
     -  name: Maven Build
-       uses: 
+       uses: karlcubilo/lb-gitops-actions/java-maven-build@latest
        with:
          package-options: ${{inputs.package-options}}
   sonar-analysis: 
     runs-on: ubuntu-latest
     steps:
     -  name: Sonar Analysis
-       uses:
+       uses: karlcubilo/lb-gitops-actions/java-sonar-analysis@latest
        with:
          sonar-options: ${{inputs.sonar-options}}
      
