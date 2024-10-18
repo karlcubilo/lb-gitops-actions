@@ -22,10 +22,6 @@ on:
         required: true
         type: string
         description: Java Version
-      sonar-token:
-        required: true
-        type: string
-        description: Sonar Token
      
 jobs:
   maven-build:
